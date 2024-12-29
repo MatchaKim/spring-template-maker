@@ -44,9 +44,10 @@ ENTITY_PACKAGE="$PACKAGE.$ENTITY_LOWER"
 ENTITY_TEMPLATE="package $ENTITY_PACKAGE.entity;
 
 import jakarta.persistence.*;
+import kr.goraes.modulecommon.entity.BaseEntity;
 
 @Entity
-public class $ENTITY_PASCAL {
+public class $ENTITY_PASCAL extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
