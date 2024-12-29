@@ -79,9 +79,9 @@ SERVICE_TEMPLATE="package $ENTITY_PACKAGE.service;
 import $ENTITY_PACKAGE.entity.${ENTITY_PASCAL};
 import $ENTITY_PACKAGE.repository.${ENTITY_PASCAL}Repository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ${ENTITY_PASCAL}Service {
@@ -89,25 +89,25 @@ public class ${ENTITY_PASCAL}Service {
     @Autowired
     private ${ENTITY_PASCAL}Repository repository;
 
-    // public List<${ENTITY_PASCAL}> getAll${ENTITY_PASCAL}s() {
-    //     return CommonResponse.success(repository.findAll());
-    // }
+    public Page<${ENTITY_PASCAL}> getAll${ENTITY_PASCAL}s(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
 
-    // public ${ENTITY_PASCAL} get${ENTITY_PASCAL}ById(Long id) {
-    //     return CommonResponse.success(repository.findById(id).orElse(null));
-    // }
+    public ${ENTITY_PASCAL} get${ENTITY_PASCAL}ById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
 
-    // public ${ENTITY_PASCAL} create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-    //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
-    // }
+    public ${ENTITY_PASCAL} create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+        return repository.save(${ENTITY_LOWER});
+    }
 
-    // public ${ENTITY_PASCAL} update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-    //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
-    // }
+    public ${ENTITY_PASCAL} update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+        return repository.save(${ENTITY_LOWER});
+    }
 
-    // public void delete${ENTITY_PASCAL}(Long id) {
-    //     repository.deleteById(id);
-    // }
+    public void delete${ENTITY_PASCAL}(Long id) {
+        repository.deleteById(id);
+    }
 }"
 
 CONTROLLER_TEMPLATE="package $ENTITY_PACKAGE.controller;
@@ -116,42 +116,44 @@ import $ENTITY_PACKAGE.entity.${ENTITY_PASCAL};
 import $ENTITY_PACKAGE.dto.${ENTITY_PASCAL}Dto;
 import $ENTITY_PACKAGE.service.${ENTITY_PASCAL}Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import kr.goraes.modulecommon.commonResponse.CommonResponse;
 
-import java.util.List;
-
 @RestController
-@RequestMapping(\"/${ENTITY_LOWER}\")
+@RequestMapping("/${ENTITY_LOWER}")
 public class ${ENTITY_PASCAL}Controller {
 
     @Autowired
     private ${ENTITY_PASCAL}Service service;
 
-    // @GetMapping
-    // public ResponseEntity<CommonResponse> getAll${ENTITY_PASCAL}s() {
-    //     return service.getAll${ENTITY_PASCAL}s();
-    // }
+    @GetMapping
+    public ResponseEntity<Page<${ENTITY_PASCAL}>> getAll${ENTITY_PASCAL}s(Pageable pageable) {
+        return ResponseEntity.ok(service.getAll${ENTITY_PASCAL}s(pageable));
+    }
 
-    // @GetMapping(\"/{id}\")
-    // public ResponseEntity<CommonResponse> get${ENTITY_PASCAL}ById(@PathVariable Long id) {
-    //     return service.get${ENTITY_PASCAL}ById(id);
-    // }
+    @GetMapping("/{id}")
+    public ResponseEntity<${ENTITY_PASCAL}> get${ENTITY_PASCAL}ById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.get${ENTITY_PASCAL}ById(id));
+    }
 
-    // @PostMapping
-    // public ResponseEntity<CommonResponse> create${ENTITY_PASCAL}(@RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-    //     return service.create${ENTITY_PASCAL}(${ENTITY_LOWER});
-    // }
+    @PostMapping
+    public ResponseEntity<${ENTITY_PASCAL}> create${ENTITY_PASCAL}(@RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+        return ResponseEntity.ok(service.create${ENTITY_PASCAL}(${ENTITY_LOWER}));
+    }
 
-    // @PutMapping(\"/{id}\")
-    // public ResponseEntity<CommonResponse> update${ENTITY_PASCAL}(@PathVariable Long id, @RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-    //     return service.update${ENTITY_PASCAL}(id, ${ENTITY_LOWER});
-    // }
+    @PutMapping("/{id}")
+    public ResponseEntity<${ENTITY_PASCAL}> update${ENTITY_PASCAL}(@PathVariable Long id, @RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+        return ResponseEntity.ok(service.update${ENTITY_PASCAL}(id, ${ENTITY_LOWER}));
+    }
 
-    // @DeleteMapping(\"/{id}\")
-    // public void delete${ENTITY_PASCAL}(@PathVariable Long id) {
-    //     service.delete${ENTITY_PASCAL}(id);
-    // }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete${ENTITY_PASCAL}(@PathVariable Long id) {
+        service.delete${ENTITY_PASCAL}(id);
+        return ResponseEntity.noContent().build();
+    }
 }"
 
 # 경로 입력 없이 필요한 경로와 클래스 파일을 자동으로 생성
