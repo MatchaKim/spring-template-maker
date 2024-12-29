@@ -124,7 +124,7 @@ import org.springframework.web.bind.annotation.*;
 import kr.goraes.modulecommon.commonResponse.CommonResponse;
 
 @RestController
-@RequestMapping("/${ENTITY_LOWER}")
+@RequestMapping(\"\/${ENTITY_LOWER}\")
 public class ${ENTITY_PASCAL}Controller {
 
     @Autowired
@@ -135,7 +135,7 @@ public class ${ENTITY_PASCAL}Controller {
     //     return service.getAll${ENTITY_PASCAL}s(pageable);
     // }
 
-    // @GetMapping("/{id}")
+    // @GetMapping(\"/\{id\}\")
     // public ResponseEntity<CommonResponse> get${ENTITY_PASCAL}ById(@PathVariable Long id) {
     //     return service.get${ENTITY_PASCAL}ById(id);
     // }
@@ -145,12 +145,12 @@ public class ${ENTITY_PASCAL}Controller {
     //     return service.create${ENTITY_PASCAL}(${ENTITY_LOWER});
     // }
 
-    // @PutMapping("/{id}")
+    // @PutMapping(\"/\{id\}\")
     // public ResponseEntity<CommonResponse> update${ENTITY_PASCAL}(@PathVariable Long id, @RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
     //     return service.update${ENTITY_PASCAL}(id, ${ENTITY_LOWER});
     // }
 
-    // @DeleteMapping("/{id}")
+    // @DeleteMapping(\"/\{id\}\")
     // public ResponseEntity<CommonResponse> delete${ENTITY_PASCAL}(@PathVariable Long id) {
     //     return service.delete${ENTITY_PASCAL}(id);
     // }
