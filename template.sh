@@ -89,25 +89,26 @@ public class ${ENTITY_PASCAL}Service {
     @Autowired
     private ${ENTITY_PASCAL}Repository repository;
 
-    public Page<${ENTITY_PASCAL}> getAll${ENTITY_PASCAL}s(Pageable pageable) {
-        return repository.findAll(pageable);
-    }
+    // public CommonResponse getAll${ENTITY_PASCAL}s(Pageable pageable) {
+    //     return CommonResponse.success(repository.findAll(pageable));
+    // }
 
-    public ${ENTITY_PASCAL} get${ENTITY_PASCAL}ById(Long id) {
-        return repository.findById(id).orElse(null);
-    }
+    // public CommonResponse get${ENTITY_PASCAL}ById(Long id) {
+    //     return CommonResponse.success(repository.findById(id).orElse(null));
+    // }
 
-    public ${ENTITY_PASCAL} create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-        return repository.save(${ENTITY_LOWER});
-    }
+    // public CommonResponse create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
+    // }
 
-    public ${ENTITY_PASCAL} update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-        return repository.save(${ENTITY_LOWER});
-    }
+    // public CommonResponse update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
+    // }
 
-    public void delete${ENTITY_PASCAL}(Long id) {
-        repository.deleteById(id);
-    }
+    // public CommonResponse delete${ENTITY_PASCAL}(Long id) {
+    //     repository.deleteById(id);
+    //     return CommonResponse.success(null);
+    // }
 }"
 
 CONTROLLER_TEMPLATE="package $ENTITY_PACKAGE.controller;
@@ -129,31 +130,30 @@ public class ${ENTITY_PASCAL}Controller {
     @Autowired
     private ${ENTITY_PASCAL}Service service;
 
-    @GetMapping
-    public ResponseEntity<Page<${ENTITY_PASCAL}>> getAll${ENTITY_PASCAL}s(Pageable pageable) {
-        return ResponseEntity.ok(service.getAll${ENTITY_PASCAL}s(pageable));
-    }
+    // @GetMapping
+    // public ResponseEntity<CommonResponse> getAll${ENTITY_PASCAL}s(Pageable pageable) {
+    //     return service.getAll${ENTITY_PASCAL}s(pageable);
+    // }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<${ENTITY_PASCAL}> get${ENTITY_PASCAL}ById(@PathVariable Long id) {
-        return ResponseEntity.ok(service.get${ENTITY_PASCAL}ById(id));
-    }
+    // @GetMapping("/{id}")
+    // public ResponseEntity<CommonResponse> get${ENTITY_PASCAL}ById(@PathVariable Long id) {
+    //     return service.get${ENTITY_PASCAL}ById(id);
+    // }
 
-    @PostMapping
-    public ResponseEntity<${ENTITY_PASCAL}> create${ENTITY_PASCAL}(@RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-        return ResponseEntity.ok(service.create${ENTITY_PASCAL}(${ENTITY_LOWER}));
-    }
+    // @PostMapping
+    // public ResponseEntity<CommonResponse> create${ENTITY_PASCAL}(@RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    //     return service.create${ENTITY_PASCAL}(${ENTITY_LOWER});
+    // }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<${ENTITY_PASCAL}> update${ENTITY_PASCAL}(@PathVariable Long id, @RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
-        return ResponseEntity.ok(service.update${ENTITY_PASCAL}(id, ${ENTITY_LOWER}));
-    }
+    // @PutMapping("/{id}")
+    // public ResponseEntity<CommonResponse> update${ENTITY_PASCAL}(@PathVariable Long id, @RequestBody ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    //     return service.update${ENTITY_PASCAL}(id, ${ENTITY_LOWER});
+    // }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete${ENTITY_PASCAL}(@PathVariable Long id) {
-        service.delete${ENTITY_PASCAL}(id);
-        return ResponseEntity.noContent().build();
-    }
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<CommonResponse> delete${ENTITY_PASCAL}(@PathVariable Long id) {
+    //     return service.delete${ENTITY_PASCAL}(id);
+    // }
 }"
 
 # 경로 입력 없이 필요한 경로와 클래스 파일을 자동으로 생성
