@@ -89,23 +89,23 @@ public class ${ENTITY_PASCAL}Service {
     @Autowired
     private ${ENTITY_PASCAL}Repository repository;
 
-    // public CommonResponse getAll${ENTITY_PASCAL}s(Pageable pageable) {
+    // public ResponseEntity<CommonResponse> getAll${ENTITY_PASCAL}s(Pageable pageable) {
     //     return CommonResponse.success(repository.findAll(pageable));
     // }
 
-    // public CommonResponse get${ENTITY_PASCAL}ById(Long id) {
+    // public ResponseEntity<CommonResponse> get${ENTITY_PASCAL}ById(Long id) {
     //     return CommonResponse.success(repository.findById(id).orElse(null));
     // }
 
-    // public CommonResponse create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    // public ResponseEntity<CommonResponse> create${ENTITY_PASCAL}(${ENTITY_PASCAL} ${ENTITY_LOWER}) {
     //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
     // }
 
-    // public CommonResponse update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
+    // public ResponseEntity<CommonResponse> update${ENTITY_PASCAL}(Long id, ${ENTITY_PASCAL} ${ENTITY_LOWER}) {
     //     return CommonResponse.success(repository.save(${ENTITY_LOWER}));
     // }
 
-    // public CommonResponse delete${ENTITY_PASCAL}(Long id) {
+    // public ResponseEntity<CommonResponse> delete${ENTITY_PASCAL}(Long id) {
     //     repository.deleteById(id);
     //     return CommonResponse.success(null);
     // }
@@ -124,7 +124,7 @@ import org.springframework.web.bind.annotation.*;
 import kr.goraes.modulecommon.commonResponse.CommonResponse;
 
 @RestController
-@RequestMapping(\"\/${ENTITY_LOWER}\")
+@RequestMapping(\"/${ENTITY_LOWER}\")
 public class ${ENTITY_PASCAL}Controller {
 
     @Autowired
